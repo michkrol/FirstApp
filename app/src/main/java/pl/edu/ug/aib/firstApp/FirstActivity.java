@@ -9,6 +9,7 @@ import android.widget.Toast;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ItemClick;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
@@ -30,7 +31,8 @@ public class FirstActivity extends ActionBarActivity {
     void init() {
         String[] values = new String[] {"A", "B", "C", "D", "E", "F", "G", "H"};
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, values);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, values);
 
         list.setAdapter(adapter);
     }
@@ -43,6 +45,11 @@ public class FirstActivity extends ActionBarActivity {
         }
 
         SecondActivity_.intent(this).username(username.getText().toString()).start();
+    }
+
+    @ItemClick(R.id.list)
+    void listItemClicked(String item) {
+        Toast.makeText(this, item, Toast.LENGTH_SHORT).show();
     }
 
     @OptionsItem
