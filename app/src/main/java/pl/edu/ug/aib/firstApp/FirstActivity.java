@@ -47,7 +47,7 @@ public class FirstActivity extends ActionBarActivity {
         SecondActivity_.intent(this).username(username.getText().toString()).start();
     }
 
-    @ItemClick(R.id.list)
+    @ItemClick
     void listItemClicked(String item) {
         Toast.makeText(this, item, Toast.LENGTH_SHORT).show();
     }
