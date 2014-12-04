@@ -1,9 +1,12 @@
 package pl.edu.ug.aib.firstApp;
 
 import android.support.v7.app.ActionBarActivity;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsItem;
@@ -19,6 +22,18 @@ public class FirstActivity extends ActionBarActivity {
 
     @ViewById
     public EditText password;
+
+    @ViewById
+    ListView list;
+
+    @AfterViews
+    void init() {
+        String[] values = new String[] {"A", "B", "C", "D", "E", "F", "G", "H"};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, values);
+
+        list.setAdapter(adapter);
+    }
 
     @Click
     void loginClicked()    {
