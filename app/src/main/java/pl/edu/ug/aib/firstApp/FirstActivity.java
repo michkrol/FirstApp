@@ -19,6 +19,7 @@ import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
 import pl.edu.ug.aib.firstApp.adapter.PersonListAdapter;
+import pl.edu.ug.aib.firstApp.data.FacebookPage;
 import pl.edu.ug.aib.firstApp.data.Person;
 
 @EActivity(R.layout.activity_my)
@@ -52,12 +53,12 @@ public class FirstActivity extends ActionBarActivity {
             Toast.makeText(this, getString(R.string.uernameTooShort), Toast.LENGTH_SHORT).show();
             return;
         }
-        myBackgroundTask.doInBackground(5000);
+        myBackgroundTask.doInBackground(username.getText().toString());
     }
 
-    void goToSecondActivity() {
+    void goToSecondActivity(FacebookPage page) {
         String text = username.getText().toString();
-        SecondActivity_.intent(this).username(text).start();
+        SecondActivity_.intent(this).username(page.name).start();
     }
 
     @ItemClick
